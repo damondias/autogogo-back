@@ -22,8 +22,8 @@ import { db } from './src/database/database.connection.js';
 
 const orm = new ORM(db);
 
-
-const insert = () => {
-    const id = orm.create('teste', { nome: 'Levy' });
+const insert = async () => {
+  await orm.create('teste', { nome: 'Levy' });
 }
-insert()
+
+insert();

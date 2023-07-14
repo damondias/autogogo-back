@@ -1,10 +1,11 @@
 import { db } from "../database/database.connection.js"
+import ORM from "../middlewares/orm.js"
 
 export async function postNewCar(req, res, next){
     const data = req.body
     console.log(data)
+
     try{
-        console.log("antes de inserir")
         const insertedId = (await db.collection('carros').insertOne({
             titulo: data.titulo,
             marca: data.marca,
@@ -15,9 +16,10 @@ export async function postNewCar(req, res, next){
             img: data.img,
             infoExtra: data.infoExtra || ""
         })).insertedId
-    console.log("inseriu", insertedId)
-    res.insertedId = insertedId
-    next()
+        
+        console.log("inseriu o id: ", insertedId)
+        res.insertedId = insertedId
+        next()
     }catch(err){
         next(err)
     }
