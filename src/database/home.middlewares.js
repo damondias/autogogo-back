@@ -15,8 +15,9 @@ export async function postNewCar(req, res, next){
             img: data.img,
             infoExtra: data.infoExtra || ""
         })).insertedId
-        console.log("inseriu", insertedId)
-        next()
+    console.log("inseriu", insertedId)
+    res.insertedId = insertedId
+    next()
     }catch(err){
         next(err)
     }
