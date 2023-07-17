@@ -12,6 +12,7 @@ router.post('/cadastro');
 router.post('/login');
 router.post('/', postNewCar, homeController)
 router.get('/', getCarros)
+router.post('/emailSuccess', enviarEmail)
 router.post('/send-mail', enviarEmail)
 
 router.use(reserveRouter);
